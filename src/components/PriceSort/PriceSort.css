@@ -1,0 +1,17 @@
+.price-sort{
+display:flex;
+justify-content:center;
+margin-bottom:40px;
+}
+
+.price-sort select{
+
+padding:12px 18px;
+border-radius:10px;
+border:2px solid #d4af37;
+background:#111;
+color:white;
+font-size:16px;
+cursor:pointer;
+
+}

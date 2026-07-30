@@ -1,0 +1,29 @@
+.type-filter{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-bottom:40px;
+flex-wrap:wrap;
+}
+
+.type-filter button{
+padding:10px 22px;
+border:none;
+border-radius:30px;
+background:#222;
+color:white;
+cursor:pointer;
+transition:.3s;
+font-size:15px;
+}
+
+.type-filter button:hover{
+background:#d4af37;
+color:black;
+}
+
+.type-filter .active{
+background:#d4af37;
+color:black;
+font-weight:bold;
+}
