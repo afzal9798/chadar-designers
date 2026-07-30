@@ -1,0 +1,103 @@
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:70px 8%;
+min-height:85vh;
+background:#0f0f0f;
+gap:60px;
+}
+
+.hero-left{
+flex:1;
+}
+
+.hero-left h1{
+font-size:60px;
+color:#d4af37;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.hero-left p{
+font-size:20px;
+color:#ddd;
+margin-bottom:35px;
+max-width:520px;
+line-height:1.7;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.shop-btn{
+background:#d4af37;
+color:black;
+padding:15px 35px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:17px;
+font-weight:bold;
+}
+
+.whatsapp-btn{
+background:transparent;
+border:2px solid #d4af37;
+color:#d4af37;
+padding:15px 35px;
+border-radius:10px;
+cursor:pointer;
+font-size:17px;
+font-weight:bold;
+}
+
+.hero-right{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+.hero-image{
+width:420px;
+height:420px;
+background:#1d1d1d;
+border:2px dashed #d4af37;
+border-radius:25px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+color:#777;
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding:50px 20px;
+}
+
+.hero-left h1{
+font-size:42px;
+}
+
+.hero-left p{
+margin:auto;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-image{
+width:300px;
+height:300px;
+}
+
+}
