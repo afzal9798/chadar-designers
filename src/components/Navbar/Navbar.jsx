@@ -1,6 +1,15 @@
 import "./Navbar.css";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 function Navbar() {
+  const { cart } = useContext(CartContext);
+
+  const totalItems = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -14,9 +23,17 @@ function Navbar() {
         <li>Contact</li>
       </ul>
 
-      <button className="nav-btn">
-        WhatsApp Order
-      </button>
+      <div className="nav-right">
+
+        <div className="cart-count">
+          🛒 {totalItems}
+        </div>
+
+        <button className="nav-btn">
+          WhatsApp Order
+        </button>
+
+      </div>
     </nav>
   );
 }

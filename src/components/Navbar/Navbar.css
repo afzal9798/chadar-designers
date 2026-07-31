@@ -56,4 +56,21 @@ align-items:center;
 gap:15px;
 }
 
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.cart-count{
+  background:#d4af37;
+  color:#111;
+  padding:10px 16px;
+  border-radius:25px;
+  font-weight:bold;
+  font-size:16px;
+  min-width:55px;
+  text-align:center;
+}
+
 }
