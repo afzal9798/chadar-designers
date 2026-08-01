@@ -12,12 +12,16 @@ import PriceSort from "./components/PriceSort/PriceSort";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer/Footer";
 import CartDrawer from "./components/CartDrawer/CartDrawer";
+import QuickViewModal from "./components/QuickViewModal/QuickViewModal";
 
 function App() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [type, setType] = useState("All");
   const [sort, setSort] = useState("default");
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -56,9 +60,20 @@ function App() {
         category={category}
         type={type}
         sort={sort}
+        setSelectedProduct={setSelectedProduct}
+        setIsModalOpen={setIsModalOpen}
       />
 
       <CartDrawer />
+
+      <QuickViewModal
+          product={selectedProduct}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAddToCart={(product) => {
+          console.log(product);
+        }}
+      />
 
       <Footer />
     </>

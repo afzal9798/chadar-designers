@@ -3,13 +3,22 @@ import { useContext } from "react";
 import { WishlistContext } from "../../context/WishlistContext";
 import { CartContext } from "../../context/CartContext";
 
-function ProductCard({ product }) {
+function ProductCard({
+  product,
+  setSelectedProduct,
+  setIsModalOpen,
+}) {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const { addToCart } = useContext(CartContext);
 
   const isWishlisted = wishlist.some(
     (item) => item.id === product.id
   );
+
+  const handleViewDetails = () => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="product-card">
@@ -44,7 +53,10 @@ function ProductCard({ product }) {
 
       <div className="buttons">
 
-        <button className="details-btn">
+        <button
+          className="details-btn"
+          onClick={handleViewDetails}
+        >
           View Details
         </button>
 

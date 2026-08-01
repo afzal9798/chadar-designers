@@ -20,6 +20,27 @@ function CartDrawer() {
     0
   );
 
+  const handleWhatsAppOrder = () => {
+  const phone = "919798014447"; // Apna WhatsApp Number
+
+  let message = "🛏️ Hello Chadar Designers,%0A%0A";
+  message += "I want to order:%0A%0A";
+
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name}%0A`;
+    message += `Quantity: ${item.quantity}%0A`;
+    message += `Price: ₹${item.price}%0A%0A`;
+  });
+
+  message += `Total: ₹${total}%0A%0A`;
+  message += "Please confirm my order.";
+
+  window.open(
+    `https://wa.me/${phone}?text=${message}`,
+    "_blank"
+  );
+};
+
   return (
     <div
       className={`cart-drawer ${
@@ -117,7 +138,9 @@ function CartDrawer() {
                 Total : ₹{total}
               </h3>
 
-              <button className="checkout-btn">
+              <button className="checkout-btn"
+              onClick={handleWhatsAppOrder}
+              >
                 WhatsApp Order
               </button>
             </div>

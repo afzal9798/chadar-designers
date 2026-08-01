@@ -2,32 +2,49 @@ import products from "../../data/products";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css";
 
-function Products({ search, category, type, sort }) {
-
+function Products({
+  search,
+  category,
+  type,
+  sort,
+  setSelectedProduct,
+  setIsModalOpen,
+}) {
   // Filter products
   const filteredProducts = products.filter((product) => {
-
     const matchSearch =
-      product.name.toLowerCase().includes(search.toLowerCase());
+      product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
 
     const matchCategory =
-      category === "All" || product.category === category;
+      category === "All" ||
+      product.category === category;
 
     const matchType =
-      type === "All" || product.type === type;
+      type === "All" ||
+      product.type === type;
 
-    return matchSearch && matchCategory && matchType;
+    return (
+      matchSearch &&
+      matchCategory &&
+      matchType
+    );
   });
 
   // Sort products
   const sortedProducts = [...filteredProducts];
 
   if (sort === "low") {
-    sortedProducts.sort((a, b) => a.price - b.price);
+    sortedProducts.sort(
+      (a, b) => a.price - b.price
+    );
   }
 
   if (sort === "high") {
-    sortedProducts.sort((a, b) => b.price - a.price);
+    sortedProducts.sort(
+      (a, b) => b.price - a.price
+    );
   }
 
   return (
@@ -36,14 +53,14 @@ function Products({ search, category, type, sort }) {
       <h2>Featured Products</h2>
 
       <div className="products-grid">
-
         {sortedProducts.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
+            setSelectedProduct={setSelectedProduct}
+            setIsModalOpen={setIsModalOpen}
           />
         ))}
-
       </div>
 
     </section>

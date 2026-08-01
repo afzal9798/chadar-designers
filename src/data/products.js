@@ -10,7 +10,10 @@ const products = [
     price: 550,
     category: "Plain",
     type: "Light",
+    rating: 5,
     image: plainLight,
+    description:
+    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
   },
   {
     id: 2,
@@ -18,7 +21,10 @@ const products = [
     price: 600,
     category: "Plain",
     type: "Dark",
+    rating: 5,
     image: plainDark,
+    description:
+    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",    
   },
   {
     id: 3,
@@ -26,7 +32,10 @@ const products = [
     price: 700,
     category: "Printed",
     type: "Light",
+    rating: 5,
     image: printedLight,
+    description:
+    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
   },
   {
     id: 4,
@@ -34,7 +43,10 @@ const products = [
     price: 750,
     category: "Printed",
     type: "Dark",
+    rating: 5,
     image: printedDark,
+    description:
+    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
   },
 ];
 
