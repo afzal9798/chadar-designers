@@ -6,13 +6,16 @@ import App from "./App.jsx";
 
 import WishlistProvider from "./context/WishlistContext";
 import CartProvider from "./context/CartContext";
+import DrawerProvider from "./context/DrawerContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WishlistProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </WishlistProvider>
+    <DrawerProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </WishlistProvider>
+    </DrawerProvider>
   </StrictMode>
 );

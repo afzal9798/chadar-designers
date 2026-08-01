@@ -11,6 +11,7 @@ import TypeFilter from "./components/TypeFilter/TypeFilter";
 import PriceSort from "./components/PriceSort/PriceSort";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer/Footer";
+import CartDrawer from "./components/CartDrawer/CartDrawer";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -56,6 +57,8 @@ function App() {
         type={type}
         sort={sort}
       />
+
+      <CartDrawer />
 
       <Footer />
     </>

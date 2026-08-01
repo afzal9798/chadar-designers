@@ -71,6 +71,12 @@ gap:15px;
   font-size:16px;
   min-width:55px;
   text-align:center;
+  cursor: pointer;
+}
+
+.cart-count:hover{
+  transform: scale(1.05);
+  transition: 0.2s;
 }
 
 }

@@ -1,9 +1,11 @@
 import "./Navbar.css";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { DrawerContext } from "../../context/DrawerContext";
 
 function Navbar() {
   const { cart } = useContext(CartContext);
+  const { openCart } = useContext(DrawerContext);
 
   const totalItems = cart.reduce(
     (total, item) => total + item.quantity,
@@ -24,15 +26,16 @@ function Navbar() {
       </ul>
 
       <div className="nav-right">
-
-        <div className="cart-count">
+        <div
+          className="cart-count"
+          onClick={openCart}
+        >
           🛒 {totalItems}
         </div>
 
         <button className="nav-btn">
           WhatsApp Order
         </button>
-
       </div>
     </nav>
   );
