@@ -1,5 +1,8 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { CartContext } from "./context/CartContext";
+import { Toaster } from "react-hot-toast";
 
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -22,6 +25,8 @@ function App() {
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { addToCart } = useContext(CartContext);
 
   return (
     <>
@@ -67,14 +72,19 @@ function App() {
       <CartDrawer />
 
       <QuickViewModal
-          product={selectedProduct}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onAddToCart={(product) => {
-          console.log(product);
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddToCart={(product) => {
+          addToCart(product);
+          setIsModalOpen(false);
         }}
       />
 
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
       <Footer />
     </>
   );

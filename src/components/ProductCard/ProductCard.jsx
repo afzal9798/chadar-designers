@@ -2,6 +2,7 @@ import "./ProductCard.css";
 import { useContext } from "react";
 import { WishlistContext } from "../../context/WishlistContext";
 import { CartContext } from "../../context/CartContext";
+import toast from "react-hot-toast";
 
 function ProductCard({
   product,
@@ -23,10 +24,17 @@ function ProductCard({
   return (
     <div className="product-card">
 
+      {/* Category Badge */}
       <span className="badge">
         {product.category}
       </span>
 
+      {/* Premium Badge */}
+      <div className="top-badge">
+        {product.badge}
+      </div>
+
+      {/* Wishlist */}
       <span
         className="wishlist"
         onClick={() => toggleWishlist(product)}
@@ -34,23 +42,73 @@ function ProductCard({
         {isWishlisted ? "❤️" : "🤍"}
       </span>
 
-      <img
-        src={product.image}
-        alt={product.name}
-      />
+      {/* Product Image */}
+      <div className="image-container">
 
+        <img
+          src={product.image}
+          alt={product.name}
+        />
+
+        <div className="image-overlay">
+          <button
+            onClick={handleViewDetails}
+          >
+            👁 Quick View
+          </button>
+        </div>
+
+      </div>
+
+      {/* Product Name */}
       <h3>{product.name}</h3>
 
+      {/* Category */}
       <p className="category">
         {product.category} • {product.type}
       </p>
 
-      <h2>₹{product.price}</h2>
+      {/* Price */}
+      <div className="price-section">
 
-      <p className="rating">
-        ⭐⭐⭐⭐⭐ ({product.rating}.0)
+        <h2 className="new-price">
+          ₹{product.price}
+        </h2>
+
+        <span className="old-price">
+          ₹{product.oldPrice}
+        </span>
+
+        <span className="discount">
+          {product.discount}% OFF
+        </span>
+
+      </div>
+
+      {/* Rating */}
+      <div className="product-meta">
+
+        <span className="rating">
+          ⭐ {product.rating}
+        </span>
+
+        <span className="reviews">
+          {product.reviews} Reviews
+        </span>
+
+      </div>
+
+      {/* Stock */}
+      <p className="stock">
+        🟢 {product.stock}
       </p>
 
+      {/* Delivery */}
+      <p className="delivery">
+        🚚 Free Delivery
+      </p>
+
+      {/* Buttons */}
       <div className="buttons">
 
         <button
@@ -62,9 +120,15 @@ function ProductCard({
 
         <button
           className="cart-btn"
-          onClick={() => addToCart(product)}
+            onClick={() => {
+            addToCart(product);
+
+           toast.success(
+            `${product.name} added to cart 🛒`
+          );
+          }}
         >
-          Add to Cart
+          Add To Cart
         </button>
 
         <button className="whatsapp-btn">

@@ -101,7 +101,21 @@ function CartDrawer() {
                       −
                     </button>
 
-                    <span>{item.quantity}</span>
+                    <div
+                      style={{
+                      width: "40px",
+                      height: "40px",
+                      background: "white",
+                      color: "black",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "22px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {item.quantity}
+                  </div>
 
                     <button
                       onClick={() =>
