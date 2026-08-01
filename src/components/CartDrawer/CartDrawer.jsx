@@ -13,6 +13,8 @@ function CartDrawer() {
     decreaseQuantity,
   } = useContext(CartContext);
 
+  console.log(cart);
+
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -32,9 +34,7 @@ function CartDrawer() {
         </button>
       </div>
 
-      console.log(cart);
       <div className="drawer-body">
-
         {cart.length === 0 ? (
           <h3>Your cart is empty.</h3>
         ) : (
@@ -50,10 +50,26 @@ function CartDrawer() {
                 />
 
                 <div className="drawer-info">
-                  <h4>{item.name}</h4>
-                  
+                  <h4
+                    style={{
+                      color: "#111",
+                      fontSize: "18px",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {item.name}
+                  </h4>
 
-                  <p>₹{item.price}</p>
+                  <p
+                    style={{
+                      color: "#d4af37",
+                      fontSize: "18px",
+                      fontWeight: "700",
+                      margin: "8px 0",
+                    }}
+                  >
+                    ₹{item.price}
+                  </p>
 
                   <div className="drawer-quantity">
                     <button
@@ -88,7 +104,18 @@ function CartDrawer() {
             ))}
 
             <div className="drawer-total">
-              <h3>Total : ₹{total}</h3>
+              <h3
+                style={{
+                color: "#111",
+                fontSize: "24px",
+                background: "#f8f8f8",
+                padding: "12px",
+                border: "2px solid #d4af37",
+                
+                }}
+              >
+                Total : ₹{total}
+              </h3>
 
               <button className="checkout-btn">
                 WhatsApp Order
@@ -96,7 +123,6 @@ function CartDrawer() {
             </div>
           </>
         )}
-
       </div>
     </div>
   );
