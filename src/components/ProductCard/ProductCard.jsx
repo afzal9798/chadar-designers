@@ -9,16 +9,51 @@ function ProductCard({
   setSelectedProduct,
   setIsModalOpen,
 }) {
-  const { wishlist, toggleWishlist } = useContext(WishlistContext);
-  const { addToCart } = useContext(CartContext);
+  const { wishlist, toggleWishlist } =
+    useContext(WishlistContext);
+
+  const { addToCart } =
+    useContext(CartContext);
 
   const isWishlisted = wishlist.some(
     (item) => item.id === product.id
   );
 
+  // View Details
   const handleViewDetails = () => {
     setSelectedProduct(product);
     setIsModalOpen(true);
+  };
+
+  // Add To Cart
+  const handleAddToCart = () => {
+    addToCart(product);
+
+    toast.success(
+      `${product.name} added to cart 🛒`
+    );
+  };
+
+  // WhatsApp Order
+  const handleWhatsAppOrder = () => {
+    // Apna WhatsApp number yahan daalo
+    // Country code ke saath, + ke bina
+    const phone = "919798014447";
+
+    const message =
+      `🛏️ Hello Chadar Designers,%0A%0A` +
+      `I want to order:%0A%0A` +
+      `Product: ${product.name}%0A` +
+      `Category: ${product.category}%0A` +
+      `Type: ${product.type}%0A` +
+      `Price: ₹${product.price}%0A` +
+      `Quantity: 1%0A%0A` +
+      `Please confirm my order.`;
+
+    window.open(
+      `https://wa.me/${phone}?text=${message}`,
+      "_blank"
+    );
   };
 
   return (
@@ -30,34 +65,40 @@ function ProductCard({
       </span>
 
       {/* Premium Badge */}
-      <div className="top-badge">
-        {product.badge}
-      </div>
+      {product.badge && (
+        <div className="top-badge">
+          {product.badge}
+        </div>
+      )}
 
       {/* Wishlist */}
       <span
         className="wishlist"
-        onClick={() => toggleWishlist(product)}
+        onClick={() => {
+        toggleWishlist(product);
+
+        if (isWishlisted) {
+          toast.error(`${product.name} removed from wishlist`);
+        } else {
+          toast.success(`${product.name} added to wishlist ❤️`);
+        }
+        }}
       >
-        {isWishlisted ? "❤️" : "🤍"}
+      {isWishlisted ? "❤️" : "🤍"}
       </span>
 
       {/* Product Image */}
       <div className="image-container">
-
         <img
           src={product.image}
           alt={product.name}
         />
 
         <div className="image-overlay">
-          <button
-            onClick={handleViewDetails}
-          >
+          <button onClick={handleViewDetails}>
             👁 Quick View
           </button>
         </div>
-
       </div>
 
       {/* Product Name */}
@@ -75,13 +116,17 @@ function ProductCard({
           ₹{product.price}
         </h2>
 
-        <span className="old-price">
-          ₹{product.oldPrice}
-        </span>
+        {product.oldPrice && (
+          <span className="old-price">
+            ₹{product.oldPrice}
+          </span>
+        )}
 
-        <span className="discount">
-          {product.discount}% OFF
-        </span>
+        {product.discount && (
+          <span className="discount">
+            {product.discount}% OFF
+          </span>
+        )}
 
       </div>
 
@@ -111,6 +156,7 @@ function ProductCard({
       {/* Buttons */}
       <div className="buttons">
 
+        {/* View Details */}
         <button
           className="details-btn"
           onClick={handleViewDetails}
@@ -118,20 +164,19 @@ function ProductCard({
           View Details
         </button>
 
+        {/* Add To Cart */}
         <button
           className="cart-btn"
-            onClick={() => {
-            addToCart(product);
-
-           toast.success(
-            `${product.name} added to cart 🛒`
-          );
-          }}
+          onClick={handleAddToCart}
         >
           Add To Cart
         </button>
 
-        <button className="whatsapp-btn">
+        {/* WhatsApp Order */}
+        <button
+          className="whatsapp-btn"
+          onClick={handleWhatsAppOrder}
+        >
           WhatsApp Order
         </button>
 

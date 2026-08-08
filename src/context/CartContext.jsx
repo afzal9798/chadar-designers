@@ -1,9 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  // Load cart from localStorage
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem(
+      "chadar-cart"
+    );
+
+    return savedCart
+      ? JSON.parse(savedCart)
+      : [];
+  });
+
+  // Save cart whenever cart changes
+  useEffect(() => {
+    localStorage.setItem(
+      "chadar-cart",
+      JSON.stringify(cart)
+    );
+  }, [cart]);
 
   // Add Product
   const addToCart = (product) => {
@@ -35,7 +52,11 @@ function CartProvider({ children }) {
 
   // Remove Product
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(
+      cart.filter(
+        (item) => item.id !== id
+      )
+    );
   };
 
   // Increase Quantity
@@ -64,7 +85,9 @@ function CartProvider({ children }) {
               }
             : item
         )
-        .filter((item) => item.quantity > 0)
+        .filter(
+          (item) => item.quantity > 0
+        )
     );
   };
 

@@ -16,10 +16,20 @@ const products = [
     oldPrice: 799,
     discount: 31,
     badge: "Best Seller",
+
     image: plainLight,
+
+    images: [
+      plainLight,
+      plainLight,
+      plainLight,
+      plainLight,
+    ],
+
     description:
-    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
+      "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
   },
+
   {
     id: 2,
     name: "Plain Dark Bedsheet",
@@ -32,10 +42,20 @@ const products = [
     oldPrice: 850,
     discount: 29,
     badge: "New Arrival",
+
     image: plainDark,
+
+    images: [
+      plainDark,
+      plainDark,
+      plainDark,
+      plainDark,
+    ],
+
     description:
-    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",    
+      "Premium quality plain dark bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
   },
+
   {
     id: 3,
     name: "Printed Light Bedsheet",
@@ -48,10 +68,20 @@ const products = [
     oldPrice: 950,
     discount: 26,
     badge: "Trending",
+
     image: printedLight,
+
+    images: [
+      printedLight,
+      printedLight,
+      printedLight,
+      printedLight,
+    ],
+
     description:
-    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
+      "Premium quality printed light bedsheet made with soft cotton fabric. Comfortable, stylish and perfect for daily use.",
   },
+
   {
     id: 4,
     name: "Printed Dark Bedsheet",
@@ -64,9 +94,18 @@ const products = [
     oldPrice: 999,
     discount: 25,
     badge: "Premium",
+
     image: printedDark,
+
+    images: [
+      printedDark,
+      printedDark,
+      printedDark,
+      printedDark,
+    ],
+
     description:
-    "Premium quality plain light bedsheet made with soft cotton fabric. Comfortable, durable and perfect for daily use.",
+      "Premium quality printed dark bedsheet made with soft cotton fabric. Comfortable, stylish and perfect for daily use.",
   },
 ];
 
